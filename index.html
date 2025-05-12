@@ -1,1 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Programs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e8f5e9; /* light green background */
+      margin: 0;
+      padding: 20px;
+      color: #2e7d32; /* dark green text */
+    }
+    h1, h3 {
+      text-align: center;
+      color: #1b5e20; /* deeper green */
+    }
+    .info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .info a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .program {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-left: 8px solid #66bb6a;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #66bb6a;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #388e3c;
+    }
+    .output {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Programs</h1>
+
+  <div class="info">
+    <h3>RUSHIL SHARMA</h3>
+    <p>Enrollment No: SAU/CS/BTECH(CSE)/2024/57</p>
+    <p><a href="https://github.com/RushilRJ/JSFUNCTIONS.git" target="_blank">My GitHub Repository</a></p>
+  </div>
+  <h1>JavaScript Programs</h1>
+
+  <div class="program">
+    <h2>1. Prime Number Checker</h2>
+    <input type="number" id="primeInput" placeholder="Enter a number">
+    <button onclick="checkPrime()">Check</button>
+    <div class="output" id="primeOutput"></div>
+  </div>
+
+  <div class="program">
+    <h2>2. Calculator</h2>
+    <input type="text" id="calcInput" placeholder="e.g. 5+3">
+    <button onclick="calculate()">Calculate</button>
+    <div class="output" id="calcOutput"></div>
+  </div>
+
+  <div class="program">
+    <h2>3. Even or Odd</h2>
+    <input type="number" id="evenOddInput" placeholder="Enter a number">
+    <button onclick="checkEvenOdd()">Check</button>
+    <div class="output" id="evenOddOutput"></div>
+  </div>
+
+  <div class="program">
+    <h2>4. Palindrome Checker</h2>
+    <input type="text" id="palinInput" placeholder="Enter a word">
+    <button onclick="checkPalindrome()">Check</button>
+    <div class="output" id="palinOutput"></div>
+  </div>
+
+  <div class="program">
+    <h2>5. Color Picker</h2>
+    <input type="color" onchange="changeBackground(this.value)">
+  </div>
+
+  <div class="program">
+    <h2>6. Light Bulb</h2>
+    <img id="bulb" src="https://www.w3schools.com/js/pic_bulboff.gif" style="width:100px">
+    <br>
+    <button onclick="turnOn()">Turn On</button>
+    <button onclick="turnOff()">Turn Off</button>
+  </div>
+
+  <div class="program">
+    <h2>7. Show/Hide Password</h2>
+    <input type="password" id="passInput">
+    <button onclick="togglePassword()">Show/Hide</button>
+  </div>
+
+  <div class="program">
+    <h2>8. Countdown Timer (from 10)</h2>
+    <button onclick="startCountdown()">Start Countdown</button>
+    <div class="output" id="countdownOutput"></div>
+  </div>
+
+  <div class="program">
+    <h2>9. Counter</h2>
+    <div class="output" id="counterValue">0</div>
+    <button onclick="increaseCounter()">Increase</button>
+    <button onclick="decreaseCounter()">Decrease</button>
+    <button onclick="resetCounter()">Reset</button>
+  </div>
+
+  <div class="program">
+    <h2>10. Reverse String</h2>
+    <input type="text" id="reverseInput">
+    <button onclick="reverseString()">Reverse</button>
+    <div class="output" id="reverseOutput"></div>
+  </div>
+
+  <div class="program">
+    <h2>11. Multiply Two Numbers</h2>
+    <input type="number" id="mul1"> x
+    <input type="number" id="mul2">
+    <button onclick="multiply()">Multiply</button>
+    <div class="output" id="mulOutput"></div>
+  </div>
+
+  <div class="program">
+    <h2>12. Convert Celsius to Fahrenheit</h2>
+    <input type="number" id="celInput">
+    <button onclick="convertTemp()">Convert</button>
+    <div class="output" id="tempOutput"></div>
+  </div>
+
+  <script>
+    function checkPrime() {
+      let num = parseInt(document.getElementById("primeInput").value);
+      let isPrime = num > 1 && [...Array(num).keys()].slice(2).every(n => num % n !== 0);
+      document.getElementById("primeOutput").innerText = isPrime ? "Prime" : "Not Prime";
+    }
+
+    function calculate() {
+      let expr = document.getElementById("calcInput").value;
+      try {
+        document.getElementById("calcOutput").innerText = eval(expr);
+      } catch {
+        document.getElementById("calcOutput").innerText = "Invalid Expression";
+      }
+    }
+
+    function checkEvenOdd() {
+      let num = parseInt(document.getElementById("evenOddInput").value);
+      document.getElementById("evenOddOutput").innerText = num % 2 === 0 ? "Even" : "Odd";
+    }
+
+    function checkPalindrome() {
+      let str = document.getElementById("palinInput").value;
+      let cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+      let isPalin = cleanStr === [...cleanStr].reverse().join('');
+      document.getElementById("palinOutput").innerText = isPalin ? "Palindrome" : "Not a Palindrome";
+    }
+
+    function changeBackground(color) {
+      document.body.style.background = color;
+    }
+
+    function turnOn() {
+      document.getElementById("bulb").src = "https://www.w3schools.com/js/pic_bulbon.gif";
+    }
+
+    function turnOff() {
+      document.getElementById("bulb").src = "https://www.w3schools.com/js/pic_bulboff.gif";
+    }
+
+    function togglePassword() {
+      let input = document.getElementById("passInput");
+      input.type = input.type === "password" ? "text" : "password";
+    }
+
+    let countdown = 10;
+    function startCountdown() {
+      let interval = setInterval(() => {
+        document.getElementById("countdownOutput").innerText = countdown;
+        countdown--;
+        if (countdown < 0) {
+          clearInterval(interval);
+          document.getElementById("countdownOutput").innerText = "Done!";
+          countdown = 10;
+        }
+      }, 1000);
+    }
+
+    let counter = 0;
+    function increaseCounter() {
+      document.getElementById("counterValue").innerText = ++counter;
+    }
+
+    function decreaseCounter() {
+      document.getElementById("counterValue").innerText = --counter;
+    }
+
+    function resetCounter() {
+      counter = 0;
+      document.getElementById("counterValue").innerText = counter;
+    }
+
+    function reverseString() {
+      let str = document.getElementById("reverseInput").value;
+      document.getElementById("reverseOutput").innerText = str.split('').reverse().join('');
+    }
+
+    function multiply() {
+      let a = parseFloat(document.getElementById("mul1").value);
+      let b = parseFloat(document.getElementById("mul2").value);
+      document.getElementById("mulOutput").innerText = a * b;
+    }
+
+    function convertTemp() {
+      let c = parseFloat(document.getElementById("celInput").value);
+      let f = (c * 9 / 5) + 32;
+      document.getElementById("tempOutput").innerText = `${f.toFixed(2)} °F`;
+    }
+  </script>
+</body>
+</html>
 
